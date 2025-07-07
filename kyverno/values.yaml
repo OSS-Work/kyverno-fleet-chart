@@ -1,0 +1,3 @@
+# rancher-payments-demo/kyverno/values.yaml
+reportsServer:
+  enabled: false

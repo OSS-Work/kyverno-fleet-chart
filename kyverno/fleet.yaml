@@ -1,0 +1,13 @@
+# rancher-payments-demo/kyverno/fleet.yaml
+defaultNamespace: kyverno-system
+
+targets:
+  - clusterGroup: payments
+
+helm:
+  chart: kyverno
+  repo: https://kyverno.github.io/kyverno/
+  version: 3.4.2
+  releaseName: kyverno
+  valuesFiles:
+    - values.yaml
