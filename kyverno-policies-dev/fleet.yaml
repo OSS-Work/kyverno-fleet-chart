@@ -1,3 +1,4 @@
 defaultNamespace: kyverno
 targets:
   - clusterGroup: payments
+  - clusterGroup: checkout
