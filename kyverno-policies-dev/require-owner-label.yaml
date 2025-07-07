@@ -1,0 +1,24 @@
+apiVersion: kyverno.io/v1
+kind: ClusterPolicy
+metadata:
+  name: require-owner-label
+spec:
+  validationFailureAction: enforce
+  background: true
+  rules:
+    - name: check-owner-label
+      match:
+        resources:
+          kinds:
+            - Deployment
+            - Pod
+        exclude:
+          namespaces:
+            - kube-system
+            - kyverno-system
+      validate:
+        message: "All resources must have an 'owner' label"
+        pattern:
+          metadata:
+            labels:
+              owner: "?*"
