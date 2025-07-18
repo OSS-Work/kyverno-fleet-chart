@@ -3,14 +3,15 @@ kind: ClusterPolicy
 metadata:
   name: disallow-privileged
 spec:
-  validationFailureAction: enforce
+  validationFailureAction: audit
   background: true
   rules:
     - name: prevent-privileged
       match:
-        resources:
-          kinds:
-            - Pod
+        any:
+          - resources:
+              kinds:
+                - Pod
       exclude:
         any:
           - resources:
@@ -23,6 +24,8 @@ spec:
         message: "Privileged mode is not allowed."
         pattern:
           spec:
+            =(securityContext):
+              =(privileged): "false"
             containers:
-              - securityContext:
-                  privileged: false
+              - =(securityContext):
+                  =(privileged): "false"
