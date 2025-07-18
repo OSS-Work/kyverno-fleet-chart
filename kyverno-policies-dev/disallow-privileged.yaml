@@ -2,7 +2,7 @@ kind: ClusterPolicy
 metadata:
   name: disallow-privileged
 spec:
-  validationFailureAction: audit
+  validationFailureAction: enforce
   background: true
   rules:
     - name: prevent-privileged
