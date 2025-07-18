@@ -11,6 +11,12 @@ spec:
         resources:
           kinds:
             - Pod
+      exclude:
+          namespaces:
+            - kube-system
+            - kyverno-system
+            - cis-operator-system
+            - cattle-system
       validate:
         message: "Privileged mode is not allowed."
         pattern:
