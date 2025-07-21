@@ -21,6 +21,9 @@ spec:
                 - cis-operator-system
                 - cattle-system
                 - monitoring-demo
+          - resources:
+              kinds:
+                - DaemonSet
       validate:
         message: "Privileged mode is not allowed."
         pattern:
